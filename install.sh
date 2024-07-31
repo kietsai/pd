@@ -53,7 +53,6 @@ cat <<- EOF > "${HOME}/.${directory}/rootfs/etc/profile.d/config.sh"
 	export LANG="C.UTF-8"
 	export MOZ_FAKE_NO_SANDBOX="1"
 	export PULSE_SERVER="127.0.0.1"
-export TERM=${TERM-xterm-256color}
 	EOF
 rm -f "${HOME}/.${directory}/rootfs/etc/resolv.conf"
 cat <<- EOF > "${HOME}/.${directory}/rootfs/etc/resolv.conf"
@@ -343,4 +342,4 @@ cat <<- EOF > "${PREFIX}/bin/start-${directory}"
 chmod +x "${PREFIX}/bin/start-${directory}"
 chmod +s "${HOME}/.${directory}/rootfs/usr/bin/sudo"
 printf "\e[34m[\e[32m*\e[34m]\e[36m Installation finished.\e[0m\n\n"
-printf "\e[36mNow run '\e[32mstart-${directory}\e[36m' to launch.\e[0m\n\n"
+printf "\e[36mNow run '\e[32mstart-${directory}\e[36m' to launch.\e[0m\n\n
