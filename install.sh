@@ -23,7 +23,7 @@ for i in curl proot; do
 		exit 1
 	fi
 done
-directory="raspberrypios"
+directory="raspios"
 distribution="Raspberry Pi OS"
 if [ -d "${HOME}/.${directory}" ]; then
 	printf "\n\e[31mError: '${distribution}' is already installed.\e[0m\n\n"
@@ -340,9 +340,6 @@ cat <<- EOF > "${PREFIX}/bin/start-${directory}"
 	exec="\$@"; [ -z "\$1" ] && exec \${command} || \${command} "\${exec}"
 	EOF
 chmod +x "${PREFIX}/bin/start-${directory}"
-chmod +s "${HOME}/.${directory}/rootfs/usr/bin/su"
 chmod +s "${HOME}/.${directory}/rootfs/usr/bin/sudo"
-rm -f "${HOME}/.${directory}/rootfs/usr/bin/lxpolkit"
-rm -f "${HOME}/.${directory}/rootfs/usr/lib/${platform}/lxpanel/plugins/volumepulse.so"
 printf "\e[34m[\e[32m*\e[34m]\e[36m Installation finished.\e[0m\n\n"
 printf "\e[36mNow run '\e[32mstart-${directory}\e[36m' to launch.\e[0m\n\n"
