@@ -53,6 +53,7 @@ cat <<- EOF > "${HOME}/.${directory}/rootfs/etc/profile.d/config.sh"
 	export LANG="C.UTF-8"
 	export MOZ_FAKE_NO_SANDBOX="1"
 	export PULSE_SERVER="127.0.0.1"
+export TERM=${TERM-xterm-256color}
 	EOF
 rm -f "${HOME}/.${directory}/rootfs/etc/resolv.conf"
 cat <<- EOF > "${HOME}/.${directory}/rootfs/etc/resolv.conf"
