@@ -39,12 +39,7 @@ if ! curl --location --output "${tarball}" \
 	exit 1
 fi
 printf "\e[0m\n\e[34m[\e[32m*\e[34m]\e[36m Installing ${distribution}, please wait...\e[0m\n"
-if ! proot --link2symlink \
-	tar -xf "${tarball}" --directory="${HOME}/.${directory}/rootfs" --exclude='dev' > /dev/null 2>&1; then
-	printf "\e[34m[\e[31m!\e[34m]\e[31m Installation failed, please check version code name.\e[0m\n\n"
-	rm -rf "${HOME}/.${directory}"
-	exit 1
-fi
+proot --link2symlink tar -xf "${tarball}" --directory="${HOME}/.${directory}/rootfs" --exclude='dev' > /dev/null 2>&1
 rm -f "${tarball}"
 cat <<- EOF > "${HOME}/.${directory}/rootfs/etc/ld.so.preload"
 	/lib/${platform}/libgcc_s.so.1
